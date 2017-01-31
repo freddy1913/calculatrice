@@ -1,96 +1,166 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Untitled</title>
-        <link rel="stylesheet" href="calcul.css"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
 
-    </head>
-    <body>
+<style>
+input {
+    text-align:right;
+}
+</style>
 
-        <table id="calculette" cellspacing="10">
-<tr>
-	<td colspan="4" class="affich">
 
-		<div id="op"></div>
-		<div id="result"></div>
+	<div class="container-fluid">
+		<div class="row" style="padding-top:50px">
+			<div class="col-sm-2 col-sm-offset-5">
+				<div class="panel panel-primary">
+                   <div class="panel-heading">
+                          Calculatrice
+                   </div>
 
-	</td>
-</tr>
-<tr style="height:20px">
-	<td></td>
-	<td></td>
-	<td></td>
-	<td class="button">Reset</td>
-</tr>
+					<div class="panel-body">
+                  
 
-<tr>
-	<td class="button">7</td>
-	<td class="button">8</td>
-	<td class="button">9</td>
-	<td class="button">/</td>
-</tr>
+                  <form>
+						<div class="row">	
+							<div class="col-sm-12">
+							    <div class="form-group">
+                    <input type="text" name="operation" value="" id="operation" class="form-control" readonly />
+							    	<input type="text" name="resultat" value="" id="resultat" class="form-control" readonly />
+							    </div>	
+							</div>
+						</div>
+ 
+                        <div class"row">
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">7</button>
+                               </div>
 
-<tr>
-	<td class="button">4</td>
-	<td class="button">5</td>
-	<td class="button">6</td>
-	<td class="button">*</td>
-</tr>
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">8</button>
+                               </div>
 
-<tr>
-	<td class="button">1</td>
-	<td class="button">2</td>
-	<td class="button">3</td>
-	<td class="button">-</td>
-</tr>
+                               <div class="col-sm-3"> 
+                                      <button type="button" class="btn btn-default">9</button>
+                               </div>
 
-<tr>
-	<td class="button">0</td>
-	<td class="button">,</td>
-	<td class="button">+</td>
-	<td class="button">=</td>
-</tr>
-</table>
+                               <div class="col-sm-3">
+                                     <button type="button" class="btn btn-default" onclick="">*</button>
+                               </div>
+                        </div>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+                        <hr>
+                        <div class"row">
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">4</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">5</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">6</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                     <button type="button" class="btn btn-default">-</button>
+                               </div>
+                        </div>
+
+                        <hr><hr>
+
+                        <div class"row">
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">1</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">2</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">3</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                     <button type="button" class="btn btn-default">+</button>
+                               </div>
+                        </div>
+
+                         <hr><hr>
+                         <div class"row">
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">C</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                      <button type="button" class="btn btn-default">0</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                       <button type="button" class="btn btn-default">/</button>
+                               </div>
+
+                               <div class="col-sm-3">
+                                     <button type="button" class="btn btn-default">=</button>
+                               </div>
+                        </div>
+
+					</div>
+
+                    <input type="hidden" name="value1" id="value1" value="0" />
+                    <input type="hidden" name="value2" id="value2" />
+                    <input type="hidden" name="operator" id="operator" value="null" />
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 <script>
 var val = "";
 var tg = "";
 var button = "";
-
-$(".button").click(function()
+$(".btn-default").click(function()
 {
-	
-	 button = $(this).html();
-	
-	if(button == "=")
-	{
-		tg = eval(val);
-	}
-	else if(button == "Reset")
-	{
-		val = "";
-		tg = "";
-	}
-	else
-	{
-		val += button;
-	}
-	
-	$("#op").html(val);
-	$("#result").html(tg);
-	
-	
+
+   button = $(this).html();
+
+  
+  if(button == "=")
+  {
+    tg = eval(val);
+  }
+  else if(button == "C")
+  {
+    val = "";
+    tg = "";
+  }
+  else
+  {
+    val += button;
+  }
+
+  
+  $("#operation").val(val);
+  $("#resultat").val(tg);
+  
+  
 });
-
-
-
 </script>
-    </body>
-</html>
 
+
+
+</body>
+</html>
 
